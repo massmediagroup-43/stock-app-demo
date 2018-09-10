@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+    - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+  web:
+    build: .
+    command: bash start_app.sh
+    volumes:
+    - .:/app
+    ports:
+    - "3000:3000"
+    env_file:
+    - web-variables.env
+    depends_on:
+    - db
