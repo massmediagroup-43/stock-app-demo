@@ -1,0 +1,22 @@
+AllCops:
+  Exclude:
+  - bin/*
+  - config/**/*
+  - db/**/*
+  - spec/**/*
+  - node_modules/**/*
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  SupportedStyles:
+    - nested
+    - compact
