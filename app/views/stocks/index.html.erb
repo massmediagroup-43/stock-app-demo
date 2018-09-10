@@ -1,0 +1,35 @@
+<div class="content">
+  <% if current_user %>
+    <div class="col-lg-10 offset-lg-1">
+      <table class="table" id="stocks">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Unit Price</th>
+          <th scope="col">Interest</th>
+          <th scope="col">Duration</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @stocks.each do |stock| %>
+          <tr>
+            <th scope="row"><%= stock.id %></th>
+            <td><%= link_to stock.name, stock, class: 'stock' %></td>
+            <td><%= stock.price %></td>
+            <td><%= stock.interest %> %</td>
+            <td><%= stock.duration %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+   <div class="col-lg-6 offset-lg-3 mt-4">
+     <div class="jumbotron">
+       <h1>Stock Productivity calculator</h1>
+       <%= link_to 'Continue', new_user_registration_path, class: 'btn btn-success' %>
+     </div>
+   </div>
+  <% end %>
+</div>

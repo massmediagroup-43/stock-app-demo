@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <h2><%= @stock.name %></h2>
+      <div class="stock-details">
+        <div class="stock-name"><b>Name:</b> <%= @stock.name %></div>
+        <div class="stock-duration"><b>Duration:</b> <%= @stock.duration %></div>
+        <div class="stock-price"><b>Price:</b> <%= @stock.price %></div>
+        <div class="stock-iterest"><b>Interest:</b> <%= @stock.interest %></div>
+        <div class="stock-total">Investment balance after <%= pluralize(@stock.duration, 'year') %> is $<%= number_with_delimiter(@calculation.total_value) %></div>
+        <%= link_to 'Delete', @stock, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }%>
+        <%= link_to 'Edit', edit_stock_path(@stock), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="chart">
+        <%= bar_chart @calculation.valuation_changes, xtitle: 'Year', ytitle: 'Balance', width: "800px", height: "500px" %>
+      </div>
+    </div>
+  </div>
+</div>
