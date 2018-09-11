@@ -3,10 +3,7 @@ class StocksController < ApplicationController
   before_action :set_stock, only: %i[edit update show destroy]
 
   def index
-    if current_user
-      @stocks = current_user.stocks
-    else
-    end
+    @stocks = current_user.stocks if current_user
   end
 
   def new
